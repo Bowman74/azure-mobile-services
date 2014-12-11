@@ -60,7 +60,8 @@
     <ConsolePause>false</ConsolePause>
     <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchSdkVersion>6.1</MtouchSdkVersion>
+    <MtouchSdkVersion>
+    </MtouchSdkVersion>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchProfiling>False</MtouchProfiling>
     <MtouchExtraArgs>
@@ -72,6 +73,8 @@
     <MtouchUseSGen>False</MtouchUseSGen>
     <MtouchUseRefCounting>False</MtouchUseRefCounting>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
+    <MtouchEnableGenericValueTypeSharing>True</MtouchEnableGenericValueTypeSharing>
+    <MtouchI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -135,9 +138,9 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Microsoft.WindowsAzure.MobileServices.iOS\Microsoft.WindowsAzure.Mobile.Ext.iOS.csproj">
+    <ProjectReference Include="..\..\src\Microsoft.WindowsAzure.MobileServices.iOS.Classic\Microsoft.WindowsAzure.Mobile.Ext.iOS.Classic.csproj">
       <Project>{a871b137-83a8-4e9b-913d-30ee0288e161}</Project>
-      <Name>Microsoft.WindowsAzure.Mobile.Ext.iOS</Name>
+      <Name>Microsoft.WindowsAzure.Mobile.Ext.iOS.Classic</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Microsoft.WindowsAzure.MobileServices\Microsoft.WindowsAzure.Mobile.csproj">
       <Project>{75557793-e36e-4190-8714-5bd2665859fb}</Project>

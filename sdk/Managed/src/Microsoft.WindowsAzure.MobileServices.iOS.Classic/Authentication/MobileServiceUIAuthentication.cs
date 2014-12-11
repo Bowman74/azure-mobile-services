@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
+#if __UNIFIED__
+using Foundation;
+using UIKit;
+#else
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+#endif
 using Xamarin.Auth._MobileServices;
 
 namespace Microsoft.WindowsAzure.MobileServices
@@ -35,7 +40,11 @@ namespace Microsoft.WindowsAzure.MobileServices
 
             auth.Error += (o, e) =>
             {
+#if __UNIFIED__
+                Action completed = () =>
+#else
                 NSAction completed = () =>
+#endif
                 {
                     Exception ex = e.Exception ?? new Exception(e.Message);
                     tcs.TrySetException(ex);
@@ -52,14 +61,17 @@ namespace Microsoft.WindowsAzure.MobileServices
 
             auth.Completed += (o, e) =>
             {
+#if __UNIFIED__
+                Action completed = () =>
+#else
                 NSAction completed = () =>
+#endif
                 {
                     if (!e.IsAuthenticated)
                         tcs.TrySetException(new InvalidOperationException(Resources.IAuthenticationBroker_AuthenticationCanceled));
                     else
                         tcs.TrySetResult(e.Account.Properties["token"]);
                 };
-
                 if (controller != null)
                     controller.DismissViewController(true, completed);
                 if (popover != null)
